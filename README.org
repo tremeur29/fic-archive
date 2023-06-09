@@ -1,0 +1,27 @@
+* Code for my personal fic archive
+
+** Preliminaries
+
+=build.sh= generates files in the =build= directory and uploads them to the remote using =rclone=. To build locally for testing, run =python3 generate.py local=, which generates links that point straight to =index.html= instead of the containing directory.
+
+This is for my personal use and definitely won’t work as is for other people, but feel free to dig around in the files. I am an amateur and I almost certainly don’t follow best practices in any respect.
+
+Fic metadata lives in =originalsmeta/= following the template, translation metadata in =translationsmeta/=; the filename for each is a unique 3-digit number. Fic files with the corresponding filenames live in =texts= (HTML, PDF, and EPUB are recognised in the script, which then moves them into =build/files/= or =build/secret/= according to metadata).
+
+On the server my =secret/= folder is protected using =.htpasswd=. In the current setup the comments are sent to my private Discord server using webhooks, so do modify the POST request in the comments pages if you don’t want your own test comments being sent to my server, haha.
+
+Requisites: =rclone= (just for uploading files to the server), Python 3.
+
+** My use case
+
+- most of my fandoms are numbered parts of a bigger franchise
+- some of my fics have both English and French versions
+- I have a lot of juvenilia that I want to place behind a veneer of protection
+- all my fics are (currently) on AO3, most have HTML versions, newer ones also have EPUB and PDF versions
+- I have weird rules about comments and sometimes turn them off after a certain period
+
+** Future plans
+
+- redirect to a consent page using local storage
+- pages for times and locations in FF fandoms
+- possibly a page for non-FF fandoms (as if I even care about these lol)
