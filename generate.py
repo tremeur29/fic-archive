@@ -7,6 +7,7 @@ import characters
 import ships
 import events
 import indexgen
+import verifygen
 
 try:
     if sys.argv[1] == "local":
@@ -26,6 +27,7 @@ if __name__ == "__main__":
         ships.shiplist(True)
         events.eventlist(True)
         indexgen.indexgen(True)
+        verifygen.verifygen(True)
     else:
         masterlist.listgen()
         commentpage.allcomments()
@@ -34,3 +36,4 @@ if __name__ == "__main__":
         ships.shiplist()
         events.eventlist()
         indexgen.indexgen()
+        verifygen.verifygen()

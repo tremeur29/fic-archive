@@ -20,8 +20,8 @@ Requisites: =rclone= (just for uploading files to the server), Python 3.
 - all my fics are (currently) on AO3, most have HTML versions, newer ones also have EPUB and PDF versions
 - I have weird rules about comments and sometimes turn them off after a certain period
 
-** Future plans
+** Future plans [1/3]
 
-- redirect to a consent page using local storage
-- pages for times and locations in FF fandoms
-- possibly a page for non-FF fandoms (as if I even care about these lol)
+- [X] redirect to a consent page using local storage (h/t [[https://www.fancoders.com/][Fandom Coders]])
+- [ ] pages for times and locations in FF fandoms
+- [ ] possibly a page for non-FF fandoms (as if I even care about these lol)
