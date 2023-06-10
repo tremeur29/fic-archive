@@ -37,7 +37,7 @@ def indexgen(local=False):
         filewrite.write("events/index.html")
     else:
         filewrite.write("/fic/events")
-    filewrite.write("\">Events</a></h2>\n<p>I’ve been participating in fandom exchanges and other events since late 2020. Most fics I write these days that aren’t in FF fandoms are in this category (although a lot of the FF ones are as well).</p>\n</div>")
+    filewrite.write("\">Events</a></h2>\n<p>I’ve been participating in fandom exchanges and other events since late 2020. Most fics I write these days that aren’t in FF fandoms are in this category (although a lot of the FF ones are as well).</p>\n</div>\n")
     filewrite.close()
     headerfooter.footerwrite("build/index.html",True,local)
 

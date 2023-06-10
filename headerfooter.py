@@ -5,7 +5,7 @@ def headerwrite(output,title,headerone,desc,main=False,local=False):
         header.write("/home/mdd/Documents/drive/proj/fic-archive/build/")
     else:
         header.write("/fic/")
-    header.write("archive.css\">\n<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=Hubballi&family=Lato:wght@400;700&family=Merriweather:wght@400;700&display=swap\" rel=\"stylesheet\">\n<title>" + title + "</title>\n</head>\n<body>\n<div id=\"content\">\n<h1>" + headerone + "</h1>\n" + desc + "\n")
+    header.write("archive.css\">\n<link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">\n<link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>\n<link href=\"https://fonts.googleapis.com/css2?family=Hubballi&family=Lato:wght@400;700&family=Merriweather:wght@400;700&display=swap\" rel=\"stylesheet\">\n<title>" + title + "</title>\n</head>\n<body>\n<div id=\"content\">\n<div id=\"inside\">\n<h1>" + headerone + "</h1>\n" + desc + "\n")
     if not main:
         header.write("<p>\n<a href=\"")
         if local:
@@ -18,8 +18,9 @@ def headerwrite(output,title,headerone,desc,main=False,local=False):
 
 def footerwrite(output,main=False,local=False):
     footer = open(output, "a")
+    footer.write("</div>\n<footer>\n<hr>\n")
     if not main:
-        footer.write("<hr>\n<p>\n<a href=\"")
+        footer.write("<p>\n<a href=\"")
         if local:
             footer.write("/home/mdd/Documents/drive/proj/fic-archive/build/index.html")
         else:
@@ -30,5 +31,5 @@ def footerwrite(output,main=False,local=False):
         footer.write("/home/mdd/Documents/drive/proj/fic-archive/build/emacs.jpg")
     else:
         footer.write("/fic/emacs.jpg")
-    footer.write("\"></div>\n</body>\n</html>")
+    footer.write("\">\n</footer>\n</div>\n</body>\n</html>")
     footer.close()
