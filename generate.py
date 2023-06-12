@@ -8,6 +8,7 @@ import ships
 import events
 import indexgen
 import verifygen
+import statsgen
 
 try:
     if sys.argv[1] == "local":
@@ -28,6 +29,7 @@ if __name__ == "__main__":
         events.eventlist(True)
         indexgen.indexgen(True)
         verifygen.verifygen(True)
+        statsgen.yeargen(True)
     else:
         masterlist.listgen()
         commentpage.allcomments()
@@ -37,3 +39,4 @@ if __name__ == "__main__":
         events.eventlist()
         indexgen.indexgen()
         verifygen.verifygen()
+        statsgen.yeargen()
