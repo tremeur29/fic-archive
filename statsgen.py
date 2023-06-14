@@ -34,11 +34,15 @@ def ficsum(ficcount,year,month=0,showfandom=True,local=False):
             fandom = "/".join(origfile.fandom)
         except:
             fandom = "/".join(fileread.fandom)
+        thechars = ""
         try:
             if "OW" not in origfile.fandom:
-                try:
-                    thechars = origfile.ship[0]
-                except:
+                if "gen" not in origfile.genre:
+                    try:
+                        thechars = origfile.ship[0]
+                    except:
+                        pass
+                else:
                     chars = []
                     try:
                         chars.extend(origfile.charpov)
@@ -56,9 +60,12 @@ def ficsum(ficcount,year,month=0,showfandom=True,local=False):
                 thechars = ""
         except:
             if "OW" not in fileread.fandom:
-                try:
-                    thechars = fileread.ship[0]
-                except:
+                if "gen" not in fileread.genre:
+                    try:
+                        thechars = fileread.ship[0]
+                    except:
+                        pass
+                else:
                     chars = []
                     try:
                         chars.extend(fileread.charpov)
@@ -74,6 +81,8 @@ def ficsum(ficcount,year,month=0,showfandom=True,local=False):
                         thechars = ""
             else:
                 thechars = ""
+        if thechars == "":
+            thechars = "no characters specified"
         if fileread.language == "fr":
             language = "French"
         else:
@@ -82,10 +91,35 @@ def ficsum(ficcount,year,month=0,showfandom=True,local=False):
             rating = origfile.rating
         except:
             rating = fileread.rating
+        genre = []
         try:
-            genre = origfile.genre[0]
+            for thegenre in origfile.genre:
+                if thegenre == "gen":
+                    genre.append(thegenre)
+                elif thegenre == "het" or thegenre == "pre-het":
+                    genre.append("het")
+                elif thegenre == "slash" or thegenre == "pre-slash" or thegenre == "poly slash":
+                    genre.append("slash")
+                elif thegenre == "femslash":
+                    genre.append("femslash")
+                elif thegenre == "poly":
+                    genre.append("multi")
+                elif thegenre == "masturbation":
+                    genre.append("other")
         except:
-            genre = fileread.genre[0]
+            for thegenre in fileread.genre:
+                if thegenre == "gen":
+                    genre.append(thegenre)
+                elif thegenre == "het" or thegenre == "pre-het":
+                    genre.append("het")
+                elif thegenre == "slash" or thegenre == "pre-slash" or thegenre == "poly slash":
+                    genre.append("slash")
+                elif thegenre == "femslash":
+                    genre.append("femslash")
+                elif thegenre == "poly":
+                    genre.append("multi")
+                elif thegenre == "masturbation":
+                    genre.append("other")
         try:
             if origfile.warnings:
                 warnings = "?!"
@@ -130,16 +164,19 @@ def ficsum(ficcount,year,month=0,showfandom=True,local=False):
             ficstring += "&nbsp;<span style=\"background-color:#eb7d10;color:white; font-family:serif\">&nbsp;M&nbsp;</span>"
         elif rating == "e":
             ficstring += "&nbsp;<span style=\"background-color:#9c0000;color:white; font-family:serif\">&nbsp;E&nbsp;</span>"
-        if genre == "gen":
-            ficstring += "&nbsp;<span style=\"background-color:#8ab60b;color:white; font-family:serif\">&nbsp;☉&nbsp;</span>"
-        elif genre == "slash" or genre == "pre-slash" or genre == "poly slash":
-            ficstring += "&nbsp;<span style=\"background-color:#1256b6;color:white; font-family:serif\">&nbsp;♂&nbsp;</span>"
-        elif genre == "het" or genre == "pre-het":
-            ficstring += "&nbsp;<span style=\"background-color:#670840;color:white; font-family:serif\">&nbsp;⚤&nbsp;</span>"
-        elif genre == "femslash":
-            ficstring += "&nbsp;<span style=\"background-color:#d50636;color:white; font-family:serif\">&nbsp;♀&nbsp;</span>"
-        elif genre == "poly":
-            ficstring += "&nbsp;<span><span style=\"background:linear-gradient(0deg, rgba(160,0,24,1) 0%, rgba(160,0,24,1) 49%, rgba(171,203,0,1) 50%, rgba(171,203,0,1) 100%);\">&nbsp;&nbsp;</span><span style=\"background: linear-gradient(0deg, rgba(0,51,148,1) 0%, rgba(0,51,148,1) 49%, rgba(129,0,108,1) 50%, rgba(129,0,108,1) 100%);\">&nbsp;&nbsp;</span></span>"
+        for thegenre in genre:
+            if thegenre == "gen":
+                ficstring += "&nbsp;<span style=\"background-color:#8ab60b;color:white; font-family:serif\">&nbsp;☉&nbsp;</span>"
+            elif thegenre == "slash":
+                ficstring += "&nbsp;<span style=\"background-color:#1256b6;color:white; font-family:serif\">&nbsp;♂&nbsp;</span>"
+            elif thegenre == "het":
+                ficstring += "&nbsp;<span style=\"background-color:#670840;color:white; font-family:serif\">&nbsp;⚤&nbsp;</span>"
+            elif thegenre == "femslash":
+                ficstring += "&nbsp;<span style=\"background-color:#d50636;color:white; font-family:serif\">&nbsp;♀&nbsp;</span>"
+            elif thegenre == "poly":
+                ficstring += "&nbsp;<span><span style=\"background:linear-gradient(0deg, rgba(160,0,24,1) 0%, rgba(160,0,24,1) 49%, rgba(171,203,0,1) 50%, rgba(171,203,0,1) 100%);\">&nbsp;&nbsp;</span><span style=\"background: linear-gradient(0deg, rgba(0,51,148,1) 0%, rgba(0,51,148,1) 49%, rgba(129,0,108,1) 50%, rgba(129,0,108,1) 100%);\">&nbsp;&nbsp;</span></span>"
+            elif thegenre == "other":
+                ficstring += "&nbsp;<span style=\"background-color:black;color:white; font-family:serif\">&nbsp;☿&nbsp;</span>"
         if warnings:
             ficstring += "&nbsp;<span style=\"background-color:#eb7d10;color:white; font-family:serif\">&nbsp;!<small>?</small>&nbsp;</span>"
         ficstring += "&nbsp;<code>" + str(words) + "</code>"

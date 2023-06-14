@@ -19,8 +19,8 @@ except:
     local = False
 
 if __name__ == "__main__":
-    feed.feedgen()
     if local == True:
+        feed.feedgen(True)
         masterlist.listgen(True)
         commentpage.allcomments(True)
         commentpage.commentindex(True)
@@ -31,6 +31,7 @@ if __name__ == "__main__":
         verifygen.verifygen(True)
         statsgen.yeargen(True)
     else:
+        feed.feedgen()
         masterlist.listgen()
         commentpage.allcomments()
         commentpage.commentindex()
