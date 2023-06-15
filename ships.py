@@ -35,6 +35,9 @@ def shiplist(local=False):
                             theships.extend(fileread.ship)
                         except:
                             pass
+        for ship in theships:
+            if ship == None:
+                theships.remove(ship)
         theships = sorted(list(dict.fromkeys(theships)))
         for ship in theships:
             shipdict = {"pairing":ship,"game":(fffandoms.index(fandom) + 1)}
