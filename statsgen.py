@@ -41,7 +41,19 @@ def ficsum(ficcount,year,month=0,showfandom=True,local=False):
                     try:
                         thechars = origfile.ship[0]
                     except:
-                        pass
+                        chars = []
+                        try:
+                            chars.extend(origfile.charpov)
+                        except:
+                            pass
+                        try:
+                            chars.extend(origfile.charmain)
+                        except:
+                            pass
+                        if chars != []:
+                            thechars = ", ".join(chars)
+                        else:
+                            thechars = ""
                 else:
                     chars = []
                     try:
@@ -64,7 +76,19 @@ def ficsum(ficcount,year,month=0,showfandom=True,local=False):
                     try:
                         thechars = fileread.ship[0]
                     except:
-                        pass
+                        chars = []
+                        try:
+                            chars.extend(fileread.charpov)
+                        except:
+                            pass
+                        try:
+                            chars.extend(fileread.charmain)
+                        except:
+                            pass
+                        if chars != []:
+                            thechars = ", ".join(chars)
+                        else:
+                            thechars = ""
                 else:
                     chars = []
                     try:

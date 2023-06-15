@@ -110,6 +110,10 @@ def commentpage(ficno,directory,local=False):
                 except:
                     pass
                 filewrite.write("</h1>\n<p>" + comment["text"] + "</p>\n</div>\n")
+                try:
+                    filewrite.write("<div class=\"comment reply\">\n<h1>Reply</h1>\n<p>" + comment["reply"] + "</p>\n</div>")
+                except:
+                    pass
         except:
             pass
         if fffandom or timeelapsed.days < 730:
