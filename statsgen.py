@@ -230,9 +230,17 @@ def yeargen(local=False):
         else:
             fileread = False
         if fileread:
-            for date in fileread.datewords:
-                yearlist.append(date["date"].year)
-                yearlist = sorted(list(dict.fromkeys(yearlist)))
+            try:
+                if fileread.revealdate > datetime.datetime.now():
+                    revealed = False
+                else:
+                    revealed = True
+            except:
+                revealed = True
+            if revealed == True:
+                for date in fileread.datewords:
+                    yearlist.append(date["date"].year)
+                    yearlist = sorted(list(dict.fromkeys(yearlist)))
     for year in yearlist:
         yearpath = "build/stats/" + str(year)
         if not os.path.isdir(yearpath):
@@ -267,9 +275,17 @@ def yeargen(local=False):
             else:
                 fileread = False
             if fileread:
-                for date in fileread.datewords:
-                    if (date["date"]).year == year:
-                        allfics.append(ficcountstring)
+                try:
+                    if fileread.revealdate > datetime.datetime.now():
+                        revealed = False
+                    else:
+                        revealed = True
+                except:
+                    revealed = True
+                if revealed == True:
+                    for date in fileread.datewords:
+                        if (date["date"]).year == year:
+                            allfics.append(ficcountstring)
         allfics = sorted(list(dict.fromkeys(allfics)))
         for fic in allfics:
             if os.path.exists("originalsmeta/" + fic + ".py"):
@@ -282,41 +298,49 @@ def yeargen(local=False):
                 fileread = False
             if fileread:
                 try:
-                    fandom = fileread.fandom
-                    event = fileread.event
-                    eventname = fileread.eventname
-                    try:
-                        eventlocation = fileread.eventlocation
-                    except:
-                        eventlocation = False
+                    if fileread.revealdate > datetime.datetime.now():
+                        revealed = False
+                    else:
+                        revealed = True
                 except:
+                    revealed = True
+                if revealed == True:
                     try:
-                        if fileread.original:
-                            theorig = "originalsmeta." + str(fileread.original)
-                            origfile = import_module(theorig)
-                            try:
-                                fandom = origfile.fandom
-                                event = origfile.event
-                                eventname = origfile.eventname
-                                try:
-                                    eventlocation = fileread.eventlocation
-                                except:
-                                    eventlocation = False
-                            except:
-                                event = False
-                                eventname = False
-                                eventlocation = False
+                        fandom = fileread.fandom
+                        event = fileread.event
+                        eventname = fileread.eventname
+                        try:
+                            eventlocation = fileread.eventlocation
+                        except:
+                            eventlocation = False
                     except:
-                        event = False
-                        eventname = False
-                        eventlocation = False
-                ficwords = 0
-                for dateword in fileread.datewords:
-                    if (dateword["date"]).year == year:
-                        ficwords = (dateword["words"])
-                    ficdict = {"number":fic,"words":ficwords,"fandom":fandom,"event":event,"eventname":eventname,"eventlocation":eventlocation,"date":dateword["date"]}
-                    ficdeets.append(ficdict)
-                    datesplit.append(ficdict)
+                        try:
+                            if fileread.original:
+                                theorig = "originalsmeta." + str(fileread.original)
+                                origfile = import_module(theorig)
+                                try:
+                                    fandom = origfile.fandom
+                                    event = origfile.event
+                                    eventname = origfile.eventname
+                                    try:
+                                        eventlocation = fileread.eventlocation
+                                    except:
+                                        eventlocation = False
+                                except:
+                                    event = False
+                                    eventname = False
+                                    eventlocation = False
+                        except:
+                            event = False
+                            eventname = False
+                            eventlocation = False
+                    ficwords = 0
+                    for dateword in fileread.datewords:
+                        if (dateword["date"]).year == year:
+                            ficwords = (dateword["words"])
+                        ficdict = {"number":fic,"words":ficwords,"fandom":fandom,"event":event,"eventname":eventname,"eventlocation":eventlocation,"date":dateword["date"]}
+                        ficdeets.append(ficdict)
+                        datesplit.append(ficdict)
         combinedeets = []
         for fic in ficdeets:
             if combinedeets == []:
@@ -514,25 +538,33 @@ def yeargen(local=False):
             else:
                 fileread = False
             if fileread:
-                for datewords in fileread.datewords:
-                    if datewords["date"] == thedate:
-                        thewords = datewords["words"]
-                        fic["words"] = thewords
-            ficlogged = False
-            if monthcombine == []:
-                if ficlogged == False:
-                    ficlogged = True
-                    monthcombine.append(fic)
-            else:
+                try:
+                    if fileread.revealdate > datetime.datetime.now():
+                        revealed = False
+                    else:
+                        revealed = True
+                except:
+                    revealed = True
+                if revealed == True:
+                    for datewords in fileread.datewords:
+                        if datewords["date"] == thedate:
+                            thewords = datewords["words"]
+                            fic["words"] = thewords
                 ficlogged = False
-                for newfic in monthcombine:
+                if monthcombine == []:
                     if ficlogged == False:
-                        if fic["number"] == newfic["number"]:
-                            if (fic["date"]).month == (newfic["date"]).month:
-                                ficlogged = True
-                                newfic["words"] += fic["words"]
-                if ficlogged == False:
-                    monthcombine.append(fic)
+                        ficlogged = True
+                        monthcombine.append(fic)
+                else:
+                    ficlogged = False
+                    for newfic in monthcombine:
+                        if ficlogged == False:
+                            if fic["number"] == newfic["number"]:
+                                if (fic["date"]).month == (newfic["date"]).month:
+                                    ficlogged = True
+                                    newfic["words"] += fic["words"]
+                    if ficlogged == False:
+                        monthcombine.append(fic)
         jan = {"fics":[],"words":0}
         feb = {"fics":[],"words":0}
         mar = {"fics":[],"words":0}

@@ -26,8 +26,12 @@ def feedgen(local=False):
         if os.path.exists("originalsmeta/" + ficcountstring + ".py"):
             ficfile = "originalsmeta." + ficcountstring
             fileread = import_module(ficfile)
-            for instalment in fileread.datewords:
-                datelist.append(instalment["date"])
+            try:
+                if fileread.revealdate <= datetime.datetime.now():
+                    datelist.append(fileread.revealdate)
+            except:
+                for instalment in fileread.datewords:
+                    datelist.append(instalment["date"])
         elif os.path.exists("translationsmeta/" + ficcountstring + ".py"):
             ficfile = "translationsmeta." + ficcountstring
             fileread = import_module(ficfile)
@@ -52,10 +56,16 @@ def feedgen(local=False):
             if os.path.exists("originalsmeta/" + ficcountstring + ".py"):
                 ficfile = "originalsmeta." + ficcountstring
                 fileread = import_module(ficfile)
-                for instalment in fileread.datewords:
-                    if instalment["date"] == date:
-                        if targetfile == 0:
-                            targetfile = ficfile
+                try:
+                    if fileread.revealdate <= datetime.datetime.now():
+                        if fileread.revealdate == date:
+                            if targetfile == 0:
+                                targetfile = ficfile
+                except:
+                    for instalment in fileread.datewords:
+                        if instalment["date"] == date:
+                            if targetfile == 0:
+                                targetfile = ficfile
             elif os.path.exists("translationsmeta/" + ficcountstring + ".py"):
                 transfile = "translationsmeta." + ficcountstring
                 transread = import_module(transfile)
@@ -69,8 +79,12 @@ def feedgen(local=False):
                 thefile = import_module(targetfile)
                 filewrite = open("build/feed.xml", "a")
                 filewrite.write("<item>\n<title>")
-                if (thefile.datewords[0])["date"] != date:
-                    filewrite.write("Updated: ")
+                try:
+                    if thefile.revealdate == True:
+                        pass
+                except:
+                    if (thefile.datewords[0])["date"] != date:
+                        filewrite.write("Updated: ")
                 filewrite.write("Fic " + ficcountstring)
                 if thefile.language == "fr":
                     filewrite.write (" (French)")
@@ -150,7 +164,7 @@ def feedgen(local=False):
                 filewrite.write(futuredate.strftime("%a, %-d %b %Y"))
                 filewrite.write(" 00:00:00 UT</pubDate>\n<link>")
                 if local:
-                    filewrite.write("/home/mdd/Documents/drive/proj/fic-archive/build/masterlist")
+                    filewrite.write("/home/mdd/Documents/drive/proj/fic-archive/build/masterlist/index.html")
                 else:
                     filewrite.write("https://tre.praze.net/fic/masterlist")
                 filewrite.write("#fic" + ficcountstring + "</link>\n<guid isPermaLink=\"false\">praze-fic-" + ficcountstring)

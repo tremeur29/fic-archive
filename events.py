@@ -25,12 +25,20 @@ def eventlist(local=False):
             ficfile = "originalsmeta." + ficcountstring
             fileread = import_module(ficfile)
             try:
-                events.append({"name":fileread.eventname,"location":fileread.eventlocation,"sortname":fileread.eventname.lower()})
+                if fileread.revealdate > datetime.datetime.now():
+                    revealed = False
+                else:
+                    revealed = True
             except:
+                revealed = True
+            if revealed == True:
                 try:
-                    events.append({"name":fileread.eventname,"location":"","sortname":fileread.eventname.lower()})
+                    events.append({"name":fileread.eventname,"location":fileread.eventlocation,"sortname":fileread.eventname.lower()})
                 except:
-                    pass
+                    try:
+                        events.append({"name":fileread.eventname,"location":"","sortname":fileread.eventname.lower()})
+                    except:
+                        pass
     newlist = []
     for event in events:
         if event not in newlist:
@@ -53,10 +61,18 @@ def eventlist(local=False):
                 countfile = "originalsmeta." + ficcountstring
                 fileread = import_module(countfile)
                 try:
-                    if fileread.eventname == theevent:
-                        evententries.append({"ficno":ficcount,"year":(fileread.datewords[0])["date"].year,"fandom":fileread.fandom})
+                    if fileread.revealdate > datetime.datetime.now():
+                        revealed = False
+                    else:
+                        revealed = True
                 except:
-                    pass
+                    revealed = True
+                if revealed == True:
+                    try:
+                        if fileread.eventname == theevent:
+                            evententries.append({"ficno":ficcount,"year":(fileread.datewords[0])["date"].year,"fandom":fileread.fandom})
+                    except:
+                        pass
         eventfandoms = []
         for entry in evententries:
             eventfandoms.extend(entry["fandom"])

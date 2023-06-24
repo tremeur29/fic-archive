@@ -1,4 +1,4 @@
-import os
+import datetime, os
 from importlib import import_module
 
 fffandoms = ["FF1","FF2","FF3","FF4","FF5","FF6","FF7","FF8","FF9","FFX","FF11","FF12","FF13","FF14","FF15"]
@@ -29,12 +29,20 @@ def shiplist(local=False):
             if os.path.exists("originalsmeta/" + ficcountstring + ".py"):
                 ficfile = "originalsmeta." + ficcountstring
                 fileread = import_module(ficfile)
-                if len(fileread.fandom) == 1:
-                    if fandom in fileread.fandom:
-                        try:
-                            theships.extend(fileread.ship)
-                        except:
-                            pass
+                try:
+                    if fileread.revealdate > datetime.datetime.now():
+                        revealed = False
+                    else:
+                        revealed = True
+                except:
+                    revealed = True
+                if revealed == True:
+                    if len(fileread.fandom) == 1:
+                        if fandom in fileread.fandom:
+                            try:
+                                theships.extend(fileread.ship)
+                            except:
+                                pass
         for ship in theships:
             if ship == None:
                 theships.remove(ship)
@@ -62,15 +70,23 @@ def shiplist(local=False):
             if os.path.exists("originalsmeta/" + ficcountstring + ".py"):
                 countfile = "originalsmeta." + ficcountstring
                 fileread = import_module(countfile)
-                if searchfandom in fileread.fandom:
-                    # append to lists
-                    try:
-                        if fileread.ship[0] == ship:
-                            maincount.append(ficcount)
-                        elif ship in fileread.ship:
-                            secondarycount.append(ficcount)
-                    except:
-                        pass
+                try:
+                    if fileread.revealdate > datetime.datetime.now():
+                        revealed = False
+                    else:
+                        revealed = True
+                except:
+                    revealed = True
+                if revealed == True:
+                    if searchfandom in fileread.fandom:
+                        # append to lists
+                        try:
+                            if fileread.ship[0] == ship:
+                                maincount.append(ficcount)
+                            elif ship in fileread.ship:
+                                secondarycount.append(ficcount)
+                        except:
+                            pass
         # write details element
         output = "build/ff/ships/index.html"
         filewrite = open(output, "a")

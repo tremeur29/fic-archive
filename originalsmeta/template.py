@@ -5,6 +5,7 @@ showtitle = False
 language = "en"
 # translation = 
 datewords = [{"date":datetime.datetime(YYYY,M,D),"words":}]
+# revealdate = datetime.datetime(YYYY,M,D)
 # approxdate = ""
 status = "complete" # incomplete, abandoned
 rating = "" # g, t, m, e

@@ -9,7 +9,7 @@ def indexgen(local=False):
     # write header
     headerfooter.headerwrite("build/index.html","Tré’s fic archive","Tré’s fic archive","",True,local)
     filewrite = open("build/index.html", "a")
-    filewrite.write("<p>Here is all my fanfiction! It’s also archived at AO3 under the name <span style=\"white-space: nowrap;\" class=\"ljuser\"><a href=\"https://archiveofourown.org/users/ovely/profile\"><img src=\"https://p.dreamwidth.org/b164c54b26e4/-/archiveofourown.org/favicon.ico\" alt=\"[archiveofourown.org profile]\" width=\"16\" height=\"16\" style=\"vertical-align: text-bottom; border: 0; padding-right: 1px;\" /></a><a href=\"https://archiveofourown.org/users/ovely/pseuds/ovely\"><b>ovely</b></a></span>.</p>\n<p>I’ve recently implemented comments – read about that <a href=\"")
+    filewrite.write("<p>Here is all my fanfiction! Much of it is also archived at AO3 under the name <span style=\"white-space: nowrap;\" class=\"ljuser\"><a href=\"https://archiveofourown.org/users/ovely/profile\"><img src=\"https://p.dreamwidth.org/b164c54b26e4/-/archiveofourown.org/favicon.ico\" alt=\"[archiveofourown.org profile]\" width=\"16\" height=\"16\" style=\"vertical-align: text-bottom; border: 0; padding-right: 1px;\" /></a><a href=\"https://archiveofourown.org/users/ovely/pseuds/ovely\"><b>ovely</b></a></span>.</p>\n<p>I’ve recently implemented comments – read about that <a href=\"")
     if local:
         filewrite.write("comments/index.html")
     else:
