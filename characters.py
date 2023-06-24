@@ -1,7 +1,7 @@
 import datetime, os
 from importlib import import_module
 
-fffandoms = ["FF1","FF2","FF3","FF4","FF5","FF6","FF7","FF8","FF9","FFX","FF11","FF12","FF13","FF14","FF15"]
+fffandoms = ["FF1","FF2","FF3","FF4","FF5","FF6","FF7","FF8","FF9","FFX","FF11","FF12","FF13","FF14","FF15","FF16"]
 
 import makeheader
 import headerfooter
@@ -14,7 +14,7 @@ def charlist(local=False):
     headerfooter.headerwrite("build/ff/characters/index.html","FF fics by character","FF fics by character","<p>Click on each bar to see fics about that character, organised according to the character’s prominence and then from newest to oldest.</p>\n<p>Key to categories:</p>\n<ul><li><b>POV character:</b> some or all of the fic is in this character’s POV</li>\n<li><b>Main character:</b> the character is part of the main ship, or their actions are significant for the plot</li>\n<li><b>Secondary character:</b> the character appears saying or doing something specific</li>\n<li><b>Mentioned:</b> the character appears as part of a group, or they’re alluded to by another character or in the narration</li></ul>",False,local)
     # iterate through fandoms
     characters = []
-    numbers = ["one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen","fourteen","fifteen"]
+    numbers = ["one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen"]
     for fandom in fffandoms:
         thecharacters = []
         ficcount = 500

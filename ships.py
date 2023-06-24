@@ -1,7 +1,7 @@
 import datetime, os
 from importlib import import_module
 
-fffandoms = ["FF1","FF2","FF3","FF4","FF5","FF6","FF7","FF8","FF9","FFX","FF11","FF12","FF13","FF14","FF15"]
+fffandoms = ["FF1","FF2","FF3","FF4","FF5","FF6","FF7","FF8","FF9","FFX","FF11","FF12","FF13","FF14","FF15","FF16"]
 
 import makeheader
 import headerfooter
@@ -14,7 +14,7 @@ def shiplist(local=False):
     headerfooter.headerwrite("build/ff/ships/index.html","FF fics by ship","FF fics by ship","<p>Click on each bar to see fics involving that ship, organised according to whether it’s the main ship or a secondary one and then from newest to oldest.</p>",False,local)
     # iterate through fandoms
     ships = []
-    numbers = ["one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen","fourteen","fifteen"]
+    numbers = ["one","two","three","four","five","six","seven","eight","nine","ten","eleven","twelve","thirteen","fourteen","fifteen","sixteen"]
     for fandom in fffandoms:
         theships = []
         ficcount = 500
