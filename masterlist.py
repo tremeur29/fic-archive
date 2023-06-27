@@ -13,7 +13,7 @@ def listgen(local=False):
     if os.path.exists("build/masterlist/index.html"):
         os.remove("build/masterlist/index.html")
     # write header
-    headerfooter.headerwrite("build/masterlist/index.html","Masterlist","Fic masterlist","<p>On this page, from newest to oldest, you’ll find basically everything I’ve ever written that is a. fanfiction and b. extant; quality may vary. RPF and things I wrote before 2020 require a username and password to access; if they’re on AO3, they’re available behind the login wall.</p>",False,local)
+    headerfooter.headerwrite("build/masterlist/index.html","Masterlist","Fic masterlist","<p>On this page, from newest to oldest, you’ll find basically everything I’ve ever written that is a. fanfiction and b. extant; quality may vary. RPF and things I wrote before 2020 require a username and password to access.</p>",False,local)
     # write fic divs
     ficcount = 500
     while ficcount > 0:

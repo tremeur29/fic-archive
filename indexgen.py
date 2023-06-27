@@ -17,12 +17,17 @@ def indexgen(local=False):
     filewrite.write("\">here</a>.</p>\n<p>You can also subscribe to <a href=\"")
     if not local:
         filewrite.write("/fic/")
-    filewrite.write("feed.xml\">the RSS feed</a> to be notified of new fics and updates to existing ones.</p>\n<div class=\"fic\">\n<h2><a href=\"")
+    filewrite.write("feed.xml\">the RSS feed</a> to be notified of new fics and updates to existing ones.</p>\n<div class=\"fic\">\n<h2>Masterlist</h2>\n<p>Every fic I’ve written since the age of five. You can view these:\n<ul>\n<li><a href=\"")
     if local:
         filewrite.write("masterlist/index.html")
     else:
         filewrite.write("/fic/masterlist")
-    filewrite.write("\">Masterlist</a></h2>\n<p>Every fic I’ve ever written since the age of five, sorted newest to oldest.</p>\n</div>\n<div class=\"fic\">\n<h2>Final Fantasy</h2>\n<p>Most of the fics I write are in FF fandoms these days. You can browse them:</p>\n<ul>\n<li><a href=\"")
+    filewrite.write("\">chronologically</a></li>\n<li><a href=\"")
+    if local:
+        filewrite.write("byfandom/index.html")
+    else:
+        filewrite.write("/fic/byfandom")
+    filewrite.write("\">by fandom</a></li>\n</ul>\n</div>\n<div class=\"fic\">\n<h2>Final Fantasy</h2>\n<p>Most of the fics I write are in FF fandoms these days. You can browse them:</p>\n<ul>\n<li><a href=\"")
     if local:
         filewrite.write("ff/characters/index.html")
     else:

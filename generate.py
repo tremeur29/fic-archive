@@ -9,6 +9,7 @@ import events
 import indexgen
 import verifygen
 import statsgen
+import fandoms
 
 try:
     if sys.argv[1] == "local":
@@ -22,6 +23,7 @@ if __name__ == "__main__":
     if local == True:
         feed.feedgen(True)
         masterlist.listgen(True)
+        fandoms.fandomlist(True)
         commentpage.allcomments(True)
         commentpage.commentindex(True)
         characters.charlist(True)
@@ -33,6 +35,7 @@ if __name__ == "__main__":
     else:
         feed.feedgen()
         masterlist.listgen()
+        fandoms.fandomlist()
         commentpage.allcomments()
         commentpage.commentindex()
         characters.charlist()
