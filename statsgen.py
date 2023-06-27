@@ -168,7 +168,12 @@ def ficsum(ficcount,year,month=0,showfandom=True,local=False):
             ficstring += "/home/mdd/Documents/drive/proj/fic-archive/build/masterlist/index.html"
         else:
             ficstring += "/fic/masterlist"
-        ficstring += "#fic" + ficcountstring + "\">"
+        ficstring += "#fic"
+        try:
+            ficstring += str(fileread.original)
+        except:
+            ficstring += ficcountstring
+        ficstring +="\">"
         if showfandom:
             ficstring += fandom
             if thechars or language:
