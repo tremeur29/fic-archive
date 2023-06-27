@@ -1,0 +1,400 @@
+@charset "UTF-8";
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 95%;
+  background: rgb(185,106,106);
+  background: radial-gradient(circle, rgba(185,106,106,1) 0%, rgba(236,197,197,1) 100%);
+  background-attachment: fixed;
+  font-family: "Merriweather", serif;
+}
+
+body, a, a:visited {
+  color: rgb(65, 27, 27);
+}
+
+a:hover {
+  background: #f0ef2d;
+}
+
+#warning {
+  background-color: #ad5252;
+  padding: 5px;
+  color: rgb(245,230,230);
+}
+
+#warning p {
+  margin: 5px;
+}
+
+#content {
+  width: 80%;
+  min-width: 350px;
+  margin: 0 auto;
+  min-height: 100%;
+  position: relative;
+}
+
+#inside {
+  padding-bottom: 100px;
+}
+
+footer {
+  height: 100px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+}
+
+hr {
+  border: 2px dashed rgb(99, 44, 44);
+}
+
+div.fic, div.comment {
+  border: 2px solid rgb(99, 44, 44);
+  margin: 5px 0;
+  padding: 0 3px;
+}
+
+div.fic:hover, div.comment:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+h1, h2, h3 {
+  font-family: "Hubballi", cursive;
+}
+
+div.fic h1 {
+  font-size: 1.5em;
+}
+
+div.fic h1 span.ficno {
+  font-weight: normal;
+  font-style: italic;
+  font-size: 0.8em;
+}
+
+div.fic h1 span.ficno::before {
+  font-weight: normal;
+  font-style: italic;
+  content: "no. ";
+  font-size: 0.6em;
+}
+
+div.fic h1 span.abandoned::before {
+  content: " (abandoned)";
+  font-weight: normal;
+  background-color: #9c0000;
+  color: white;
+}
+
+div.fic ul.ficlinks li, div.fic ul.ficmeta li {
+  list-style: none;
+}
+
+div.fic li.ficdate::before {
+  content:"Date: ";
+  font-style: italic;
+}
+
+div.fic li.wordcount::before {
+  content:"Wordcount: ";
+  font-style: italic;
+}
+
+div.fic li.rating::before {
+  content:"Rating: ";
+  font-style: italic;
+}
+
+div.fic li.rating span.g::before {
+  background-color: #8ab60b;
+  color: white;
+  content: "general";
+  text-transform: uppercase;
+  font-family: "Hubballi", sans-serif;
+}
+
+div.fic li.rating span.t::before {
+  background-color: #e8d405;
+  color: white;
+  content: "teen";
+  text-transform: uppercase;
+  font-family: "Hubballi", sans-serif;
+}
+
+div.fic li.rating span.m::before {
+  background-color: #eb7d10;
+  color: white;
+  content: "mature";
+  text-transform: uppercase;
+  font-family: "Hubballi", sans-serif;
+}
+
+div.fic li.rating span.e::before {
+  background-color: #9c0000;
+  color: white;
+  content: "explicit";
+  text-transform: uppercase;
+  font-family: "Hubballi", sans-serif;
+}
+
+div.fic li.fandom::before {
+  content:"Fandom: ";
+  font-style: italic;
+}
+
+div.fic li.characters::before {
+  content:"Characters: ";
+  font-style: italic;
+}
+
+div.fic li.genre::before {
+  content:"Genre: ";
+  font-style: italic;
+}
+
+div.fic li.warnings::before {
+  content:"Warnings: ";
+  font-style: italic;
+  color: #9c0000;
+  font-weight: bold;
+}
+
+div.fic li.time::before {
+  content:"Point in canon: ";
+  font-style: italic;
+}
+
+div.fic li.location::before {
+  content:"Location: ";
+  font-style: italic;
+}
+
+div.fic p.summary::before {
+  content:"Summary: ";
+  font-style: italic;
+}
+
+div.fic p.note::before {
+  content:"Notes: ";
+  font-style: italic;
+}
+
+div.fic ul.ficlinks li a.locked::before {
+  content:"🔒";
+}
+
+div.fic ul.ficlinks.french::before {
+  content:"French:";
+}
+
+div.fic ul.ficlinks.english::before {
+  content:"English:";
+}
+
+div.fic ul.ficlinks li a {
+  border: 2px solid rgb(99, 44, 44);
+  padding: 3px;
+}
+
+div.fic ul.ficlinks li {
+  display: inline;
+  line-height: 2;
+}
+
+div.fic ul.ficlinks li + li::before {
+  content: "  •   ";
+}
+
+div.comment.reply {
+  margin-left: 20px;
+}
+
+div.comment h1 {
+  font-size: 1.2em;
+}
+
+input, textarea {
+  display: block;
+  width: 90%;
+  margin: 10px;
+  font-family: "Merriweather", serif;
+}
+
+button {
+  margin-left: 10px;
+  font-family: "Hubballi", sans-serif;
+  font-weight: bold;
+  font-size: 1.2em;
+  border: 2px solid rgb(99, 44, 44);
+  background: transparent;
+  cursor: pointer;
+  padding: 3px;
+}
+
+button:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+span.spoiler {
+  filter: blur(0.25em);
+}
+
+span.spoiler:hover, span.spoiler:focus {
+  filter: blur(0);
+}
+
+details {
+  margin-bottom: 10px;
+  border: 5px solid #ad5252;
+}
+
+details > div {
+  margin: 10px !important;
+}
+
+details > h1 {
+  font-size: 1.2em;
+  margin: 10px;
+}
+
+summary {
+  background-color: #ad5252;
+  padding: 5px;
+  list-style: none;
+  color: rgb(245,230,230);
+  cursor: pointer;
+}
+
+summary a, summary a:visited {
+  color: rgb(245,230,230);
+}
+
+summary a:hover {
+  color: rgb(65, 27, 27);
+}
+
+details summary:marker {
+  display: none;
+}
+
+summary > span.character {
+  font-weight: bold;
+}
+
+summary > span.character:after {
+  margin: 0 5px;
+  font-family: "Hubballi", sans-serif;
+  font-size: 0.8em;
+  border-radius: 5px;
+  color: white;
+  padding: 2px;
+}
+
+summary > span.one:after {
+  content: "FF1";
+  background-color: #014477;
+}
+
+summary > span.two:after {
+  content: "FF2";
+  background-color: #932347;
+}
+
+summary > span.three:after {
+  content: "FF3";
+  background-color: #009b58;
+  background: linear-gradient(164deg, rgba(0,163,226,1) 0%, rgba(0,155,88,1) 100%);
+}
+
+summary > span.four:after {
+  content: "FF4";
+  background-color: #412f63;
+}
+
+summary > span.five:after {
+  content: "FF5";
+  background-color: #a046a1;
+  background: linear-gradient(164deg, rgba(160,70,161,1) 0%, rgba(195,211,231,1) 100%);
+}
+
+summary > span.six:after {
+  content: "FF6";
+  background-color: #8b1e2c;
+}
+
+summary > span.seven:after {
+  content: "FF7";
+  background-color: #003a23;
+  background: linear-gradient(164deg, rgba(0,58,35,1) 0%, rgba(184,205,244,1) 100%);
+}
+
+summary > span.eight:after {
+  content: "FF8";
+  background-color: #861413;
+  background: linear-gradient(164deg, rgba(134,20,19,1) 0%, rgba(249,233,0,1) 100%);
+}
+
+summary > span.nine:after {
+  content: "FF9";
+  background-color: #825f33;
+}
+
+summary > span.ten:after {
+  content: "FF10";
+  background-color: #4689cb;
+  background: linear-gradient(164deg, rgba(70,137,203,1) 0%, rgba(217,160,113,1) 100%);
+}
+
+summary > span.twelve:after {
+  content: "FF12";
+  background-color: #455672;
+  background: linear-gradient(164deg, rgba(69,86,114,1) 0%, rgba(190,121,145,1) 100%);
+}
+
+summary > span.thirteen:after {
+  content: "FF13";
+  background-color: #47b9bc;
+}
+
+summary > span.fifteen:after {
+  content: "FF15";
+  background-color: #2e2c3a;
+}
+
+summary > span.sixteen:after {
+  content: "FF16";
+  background: rgb(233,175,96);
+  background: linear-gradient(164deg, rgba(233,175,96,1) 0%, rgba(72,58,165,1) 100%);
+}
+
+span.pov, span.main, span.secondary, span.mention {
+  margin: 0 5px;
+}
+
+span.pov:before {
+  content: "POV: ";
+}
+
+span.main:before {
+  content: "main: ";
+}
+
+span.secondary:before {
+  content: "secondary: ";
+}
+
+span.mention:before {
+  content: "mentioned: ";
+}
+
+input#verifyage-checkbox {
+  display: inline;
+  width: auto;
+  margin: 0;
+}

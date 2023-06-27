@@ -14,7 +14,6 @@ build/secret/*.pdf
 build/secret/*.epub
 build/secret/*.gif
 build/secret/*.png
-build/archive.css
 build/emacs.jpg
 originalsmeta/*
 !originalsmeta/__init__.py
