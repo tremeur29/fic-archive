@@ -401,8 +401,12 @@ def ficgen(ficno,unique=False,output="output.html",local=False):
         try:
             if fileread.ao3slug:
                 filewrite.write("<li class=\"ao3link\"><a ")
-                if fileread.locked:
-                    filewrite.write("class=\"locked\" ")
+                try:
+                    if fileread.ao3locked:
+                        filewrite.write("class=\"locked\" ")
+                except:
+                    if fileread.locked:
+                        filewrite.write("class=\"locked\" ")
                 filewrite.write("href=\"https://archiveofourown.org/works/" + str(fileread.ao3slug) + "\">AO3</a></li>\n")
         except:
             pass
