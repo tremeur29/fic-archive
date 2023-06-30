@@ -167,7 +167,12 @@ def feedgen(local=False):
                     filewrite.write("/home/mdd/Documents/drive/proj/fic-archive/build/masterlist/index.html")
                 else:
                     filewrite.write("https://tre.praze.net/fic/masterlist")
-                filewrite.write("#fic" + ficcountstring + "</link>\n<guid isPermaLink=\"false\">praze-fic-" + ficcountstring)
+                filewrite.write("#fic")
+                try:
+                    filewrite.write(str(thefile.original))
+                except:
+                    filewrite.write(ficcountstring)
+                filewrite.write("</link>\n<guid isPermaLink=\"false\">praze-fic-" + ficcountstring)
                 datecount = 0
                 dateindex = 0
                 for instalment in thefile.datewords:
