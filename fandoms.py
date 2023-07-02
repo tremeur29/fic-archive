@@ -47,9 +47,9 @@ def fandomlist(local=False):
                 newfandom = "FF0" + fandom[-1]
             else:
                 newfandom = fandom
-            fandomlist.append({"searchname":fandom,"sortname":newfandom.replace("FF","Final Fantasy "),"displayname":fandom.replace("FF","Final Fantasy ")})
+            fandomlist.append({"searchname":fandom,"sortname":newfandom.replace("FF","Final Fantasy ").lower(),"displayname":fandom.replace("FF","Final Fantasy ")})
         else:
-            fandomlist.append({"searchname":fandom,"sortname":fandom,"displayname":fandom})
+            fandomlist.append({"searchname":fandom,"sortname":fandom.lower(),"displayname":fandom})
     fandomlist = sorted(fandomlist, key=lambda d: d["sortname"])
     for fandom in fandomlist:
         fandomfics = []

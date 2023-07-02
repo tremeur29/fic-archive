@@ -17,11 +17,11 @@ do
     then
         if test -f "originalsmeta/${ficstring}.py"
         then
-            if grep -q "locked = True" "originalsmeta/${ficstring}.py"
+            if grep -q "^locked = True" "originalsmeta/${ficstring}.py"
                then
                    builddir="secret"
             else
-                if grep -q "locked = False" "originalsmeta/${ficstring}.py"
+                if grep -q "^locked = False" "originalsmeta/${ficstring}.py"
                 then
                     builddir="files"
                 fi
@@ -29,11 +29,11 @@ do
         else
             if test -f "translationsmeta/${ficstring}.py"
             then
-                if grep -q "locked = True" "translationsmeta/${ficstring}.py"
+                if grep -q "^locked = True" "translationsmeta/${ficstring}.py"
                 then
                     builddir="secret"
                 else
-                    if grep -q "locked = False" "translationsmeta/${ficstring}.py"
+                    if grep -q "^locked = False" "translationsmeta/${ficstring}.py"
                     then
                         builddir="files"
                     fi
