@@ -9,7 +9,7 @@ def fandomlist(local=False):
     if os.path.exists("build/byfandom/index.html"):
         os.remove("build/byfandom/index.html")
     # write header
-    headerfooter.headerwrite("build/byfandom/index.html","Fics by fandom","Fics by fandom","<p>On this page, you’ll find basically everything I’ve ever written that is a. fanfiction and b. extant, grouped by fandom and then sorted newest to oldest; quality may vary. RPF and things I wrote before 2020 require a username and password to access.</p>",False,local)
+    headerfooter.headerwrite("build/byfandom/index.html","Fics by fandom","Fics by fandom","<p>On this page, you’ll find basically everything I’ve ever written that is a. fanfiction and b. extant, grouped by fandom and then sorted newest to oldest; quality may vary. Some fics, such as things I wrote before 2020, require a username and password to access.</p>",False,local)
     # get list of fandoms
     fandoms = []
     ficcount = 500

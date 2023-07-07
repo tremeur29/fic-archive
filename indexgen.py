@@ -37,7 +37,12 @@ def indexgen(local=False):
         filewrite.write("ff/ships/index.html")
     else:
         filewrite.write("/fic/ff/ships")
-    filewrite.write("\">by ship</a></li>\n</ul>\n</div>\n<div class=\"fic\">\n<h2><a href=\"")
+    filewrite.write("\">by ship</a></li>\n<li><a href=\"")
+    if local:
+        filewrite.write("ff/bywords/index.html")
+    else:
+        filewrite.write("/fic/ff/bywords")
+    filewrite.write("\">by length</a></li>\n</ul>\n</div>\n<div class=\"fic\">\n<h2><a href=\"")
     if local:
         filewrite.write("events/index.html")
     else:

@@ -187,7 +187,7 @@ def feedgen(local=False):
                     filewrite.write(" in this update")
                 filewrite.write(".")
                 try:
-                    filewrite.write(" " + re.sub("<[^<]+?>", "", thefile.summary))
+                    filewrite.write(" " + re.sub("<[^<]+?>","",re.sub("<span class=\"spoiler\">.*</span>","[spoiler]",thefile.summary)))
                 except:
                     filewrite.write(" No summary provided.")
                 try:

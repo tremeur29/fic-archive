@@ -6,6 +6,7 @@ import feed
 import characters
 import ships
 import events
+import wordcount
 import indexgen
 import verifygen
 import statsgen
@@ -29,6 +30,7 @@ if __name__ == "__main__":
         characters.charlist(True)
         ships.shiplist(True)
         events.eventlist(True)
+        wordcount.bywords(True)
         indexgen.indexgen(True)
         verifygen.verifygen(True)
         statsgen.yeargen(True)
@@ -41,6 +43,7 @@ if __name__ == "__main__":
         characters.charlist()
         ships.shiplist()
         events.eventlist()
+        wordcount.bywords()
         indexgen.indexgen()
         verifygen.verifygen()
         statsgen.yeargen()
