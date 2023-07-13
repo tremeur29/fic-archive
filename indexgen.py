@@ -1,6 +1,52 @@
 import os
+from importlib import import_module
 
 import headerfooter
+
+def statslist(local=False):
+    yearlist = []
+    ficcount = 500
+    while ficcount > 0:
+        ficcount -= 1
+        if ficcount < 10:
+            ficcountstring = "00" + str(ficcount)
+        elif ficcount < 100:
+            ficcountstring = "0" + str(ficcount)
+        else:
+            ficcountstring = str(ficcount)
+        if os.path.exists("originalsmeta/" + ficcountstring + ".py"):
+            ficfile = "originalsmeta." + ficcountstring
+            fileread = import_module(ficfile)
+        elif os.path.exists("translationsmeta/" + ficcountstring + ".py"):
+            ficfile = "translationsmeta." + ficcountstring
+            fileread = import_module(ficfile)
+        else:
+            fileread = False
+        if fileread:
+            try:
+                if fileread.revealdate > datetime.datetime.now():
+                    revealed = False
+                else:
+                    revealed = True
+            except:
+                revealed = True
+            if revealed == True:
+                for date in fileread.datewords:
+                    yearlist.append(date["date"].year)
+                    yearlist = sorted(list(dict.fromkeys(yearlist)))
+    linkedyears = []
+    for year in yearlist:
+        statstring = ""
+        if local == True:
+            statspath = "/home/mdd/Documents/drive/proj/fic-archive/build/stats/" + str(year) + "/index.html"
+        else:
+            statspath = "/fic/stats/" + str(year)
+        if yearlist.index(year) > 0:
+            statstring += " • "
+        statstring += "<a href=\"" + statspath + "\">" + str(year) + "</a>"
+        linkedyears.append(statstring)
+    listofyears = "".join(linkedyears)
+    return listofyears
 
 def indexgen(local=False):
     # delete existing file
@@ -47,9 +93,10 @@ def indexgen(local=False):
         filewrite.write("events/index.html")
     else:
         filewrite.write("/fic/events")
-    filewrite.write("\">Events</a></h2>\n<p>I’ve been participating in fandom exchanges and other events since late 2020. Most fics I write these days that aren’t in FF fandoms are in this category (although a lot of the FF ones are as well).</p>\n</div>\n")
+    filewrite.write("\">Events</a></h2>\n<p>I’ve been participating in fandom exchanges and other events since late 2020. Most fics I write these days that aren’t in FF fandoms are in this category (although a lot of the FF ones are as well).</p>\n</div>\n<div class=\"fic\">\n<h2>Other</h2>\n<ul>\n<li>Stats by year: " + (str(statslist(local))) + "</li>\n</ul>\n</div>\n")
     filewrite.close()
     headerfooter.footerwrite("build/index.html",True,local)
 
 if __name__ == "__main__":
-    indexgen()
+    statslist(True)
+    indexgen(True)
