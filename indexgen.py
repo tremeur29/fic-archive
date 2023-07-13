@@ -1,4 +1,4 @@
-import os
+import datetime, os
 from importlib import import_module
 
 import headerfooter
@@ -42,8 +42,11 @@ def statslist(local=False):
         else:
             statspath = "/fic/stats/" + str(year)
         if yearlist.index(year) > 0:
-            statstring += " • "
-        statstring += "<a href=\"" + statspath + "\">" + str(year) + "</a>"
+            statstring += "&nbsp;• "
+        statstring += "<a href=\"" + statspath + "\">" + str(year)
+        if year == (datetime.datetime.now()).year:
+            statstring += " (so far)"
+        statstring += "</a>"
         linkedyears.append(statstring)
     listofyears = "".join(linkedyears)
     return listofyears
